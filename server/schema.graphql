@@ -1,0 +1,12 @@
+type Query {
+    students: [Student]
+}
+
+type Mutation {
+    createStudent(name: String, age: String): Student
+}
+
+type Student {
+    name: String
+    age: String
+}
