@@ -3,10 +3,15 @@ type Query {
 }
 
 type Mutation {
-    createStudent(name: String, age: String): Student
+    createStudent(input: CreateStudentInput): Student
 }
 
 type Student {
-    name: String
+    fname: String
+    lname: String
     age: String
+}
+
+input CreateStudentInput {
+    fname: String, lname: String, age: String
 }

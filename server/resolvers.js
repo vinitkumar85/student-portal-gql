@@ -8,9 +8,9 @@ export const resolvers = {
         }
     },
     Mutation: {
-        createStudent: async (_root, args)=> {
-            const {name, age} = args;
-            return await createStudent(name, age);
+        createStudent: async (_root, {input})=> {
+            const {fname, lname, age} = input;
+            return await createStudent(fname, lname, age);
         }
     }
 }

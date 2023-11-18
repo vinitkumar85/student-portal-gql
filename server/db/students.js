@@ -7,11 +7,8 @@ export async function getStudents() {
   return await getStudentTable().select();
 }
 
-export async function createStudent(name, age) {
-    const student = {id: generateId(), name, age}
-    await getStudentTable().insert(student);
-    return student;
-  }
-
-
-
+export async function createStudent(fname, lname, age) {
+  const student = {id: generateId(), fname, lname, age}
+  await getStudentTable().insert(student);
+  return student;
+}

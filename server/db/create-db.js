@@ -6,19 +6,22 @@ await schema.dropTableIfExists('student');
 
 await schema.createTable('student', (table) => {
   table.text('id').notNullable().primary();
-  table.text('name').notNullable();
+  table.text('fname').notNullable();
+  table.text('lname').notNullable();
   table.text('age');
 });
 
 await connection.table('student').insert([
   {
     id: 'FjcJCHJALA4i',
-    name: 'Shlok',
+    fname: 'Shlok',
+    lname: 'Verma',
     age: '6',
   },
   {
     id: 'GjcJCHJALA4i',
-    name: 'Shubh',
+    fname: 'Shubh',
+    lname: 'Verma',
     age: '7',
   },
 ]);
