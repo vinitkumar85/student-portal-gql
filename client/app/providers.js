@@ -1,13 +1,12 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from "react-query";
-
-const queryClient = new QueryClient();
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../lib/utils";
 
 export default function Providers({ children }) {
  return (
-    <QueryClientProvider client={queryClient}>
+    <ApolloProvider client={client}>
         {children}
-  </QueryClientProvider>
+  </ApolloProvider>
   )
 }

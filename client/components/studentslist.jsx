@@ -1,36 +1,26 @@
 'use client';
 
-import { useQuery } from "react-query";
+import { useQuery, gql } from "@apollo/client";
 
-async function fetchStudentList() {
-    const response = await fetch('http://localhost:9000/graphql', {
-        method: "POST",
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body:  JSON.stringify({
-            query: `query Query {
-                students {
-                  fname
-                  lname
-                  id
-                }
-              }`
-        })
-    });
-    const res = await response.json();
-    return await res?.data?.students;
-  }
+const STUDENT_QUERY = gql`query Query {
+    students {
+      fname
+      lname
+      id
+    }
+  }`
 
 export default function StudentsList() {
-    const {data: studentList, status} = useQuery('students', fetchStudentList)
+    const {data: studentList, status} = useQuery(STUDENT_QUERY)
     if(status === 'loading'){
         return <p>loading...</p>
     }
+    const {students} = studentList || {};
+
     return <>
         <ul>
             {
-               studentList && studentList.length && studentList.map((student)=>{
+               students && students.length && students.map((student)=>{
                 return <li key={student.id}>{student.fname} {student.lname} </li>
                }) 
             }
