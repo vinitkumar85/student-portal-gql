@@ -11,7 +11,8 @@ const STUDENT_QUERY = gql`query Query {
   }`
 
 export default function StudentsList() {
-    const {data: studentList, status} = useQuery(STUDENT_QUERY)
+    const {data: studentList, status} = useQuery(STUDENT_QUERY);
+
     if(status === 'loading'){
         return <p>loading...</p>
     }
